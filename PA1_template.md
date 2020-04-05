@@ -115,7 +115,7 @@ install.packages("ggplot2",repos = c("http://cran.rstudio.com"))
 ## package 'ggplot2' successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-## 	C:\Users\Declan\AppData\Local\Temp\RtmpWUf5oI\downloaded_packages
+## 	C:\Users\Declan\AppData\Local\Temp\RtmpMjs4GY\downloaded_packages
 ```
 
 ```r
@@ -172,7 +172,7 @@ summary(totbyday$"Total.Daily.Steps")
 ggplot(data=totbyday, aes(Total.Daily.Steps,fill=I("blue"),col=I("red")))+geom_histogram(bins=25)+ggtitle("Histogram of Total Daily Steps")
 ```
 
-![](./PA1_template_files/figure-html/data summed by date-1.png)<!-- -->
+![data summed by date-1.png](PA1_template_files/figure-html/data summed by date-1.png)<!-- -->
 
 
 ### What is the average daily activity pattern?
@@ -222,7 +222,7 @@ ggplot(meanbyinterval, aes(dtime,Mean.Interval.Steps))+ geom_line()+ xlab("Time 
   ggtitle("Timeplot of mean steps per interval")+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
 ```
 
-![](PA1_template_files/figure-html/data average per interval-1.png)<!-- -->
+![data average per interval-1.png](PA1_template_files/figure-html/data average per interval-1.png)<!-- -->
 
 ```r
 ## Interval with the maximum number of mean steps      
@@ -301,7 +301,7 @@ print(paste0("The number of observations that having missing steps is ",nrow(msa
 ggplot(data=itotbyday, aes(Total.Daily.Steps,fill=I("blue"),col=I("red")))+geom_histogram(bins=25)+ggtitle("Histogram of Total Daily Steps including imputed values")
 ```
 
-![](PA1_template_files/figure-html/imputed missing values-1.png)<!-- -->
+![imputed missing values-1.png](PA1_template_files/figure-html/imputed missing values-1.png)<!-- -->
 
 ```r
 ## Summary output will display the mean and median values of the Total Daily Steps using imputed data)
@@ -352,7 +352,7 @@ ggplot(wd, aes(dtime,Mean.Interval.Steps))+ geom_line()+ xlab("Time over 24 hour
   ggtitle("Mean steps per interval by weekend/weekday")
 ```
 
-![](PA1_template_files/figure-html/average interval per daytype-1.png)<!-- -->
+![average interval per daytype-1.png](PA1_template_files/figure-html/average interval per daytype-1.png)<!-- -->
 
 **Conclusion**
 
