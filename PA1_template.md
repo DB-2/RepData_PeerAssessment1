@@ -172,7 +172,7 @@ summary(totbyday$"Total.Daily.Steps")
 ggplot(data=totbyday, aes(Total.Daily.Steps,fill=I("blue"),col=I("red")))+geom_histogram(bins=25)+ggtitle("Histogram of Total Daily Steps")
 ```
 
-![](./instructions_fig/data summed by date-1.png)<!-- -->
+![](data summed by date-1.png)<!-- -->
 
 
 ### What is the average daily activity pattern?
@@ -222,7 +222,7 @@ ggplot(meanbyinterval, aes(dtime,Mean.Interval.Steps))+ geom_line()+ xlab("Time 
   ggtitle("Timeplot of mean steps per interval")+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
 ```
 
-![](./instructions_fig/data average per interval-1.png)<!-- -->
+![](data average per interval-1.png)<!-- -->
 
 ```r
 ## Interval with the maximum number of mean steps      
@@ -301,7 +301,7 @@ print(paste0("The number of observations that having missing steps is ",nrow(msa
 ggplot(data=itotbyday, aes(Total.Daily.Steps,fill=I("blue"),col=I("red")))+geom_histogram(bins=25)+ggtitle("Histogram of Total Daily Steps including imputed values")
 ```
 
-![](./instructions_fig/imputed missing values-1.png)<!-- -->
+![](imputed missing values-1.png)<!-- -->
 
 ```r
 ## Summary output will display the mean and median values of the Total Daily Steps using imputed data)
@@ -352,7 +352,7 @@ ggplot(wd, aes(dtime,Mean.Interval.Steps))+ geom_line()+ xlab("Time over 24 hour
   ggtitle("Mean steps per interval by weekend/weekday")
 ```
 
-![](./instructions_fig/average interval per daytype-1.png)<!-- -->
+![](average interval per daytype-1.png)<!-- -->
 
 **Conclusion**
 
