@@ -51,7 +51,8 @@ Any plots and figures used have been embedded in this single markdown document a
 
 **Code to read and unzip the file with sample data**
 
-```{r setup, include=TRUE}
+
+```r
 knitr::opts_chunk$set(echo = TRUE)
 
 ## Read the zip file
@@ -68,20 +69,67 @@ activitydf$datefmt<-as.Date(activitydf$date, "%Y-%m-%d")
 ## Display data type and sample data
 ## Data Types etc
 str(activitydf)
+```
+
+```
+## 'data.frame':	17568 obs. of  4 variables:
+##  $ steps   : int  NA NA NA NA NA NA NA NA NA NA ...
+##  $ date    : chr  "2012-10-01" "2012-10-01" "2012-10-01" "2012-10-01" ...
+##  $ interval: int  0 5 10 15 20 25 30 35 40 45 ...
+##  $ datefmt : Date, format: "2012-10-01" "2012-10-01" ...
+```
+
+```r
 ## Sample of first 10 observations
 head(activitydf, n=10)
 ```
 
+```
+##    steps       date interval    datefmt
+## 1     NA 2012-10-01        0 2012-10-01
+## 2     NA 2012-10-01        5 2012-10-01
+## 3     NA 2012-10-01       10 2012-10-01
+## 4     NA 2012-10-01       15 2012-10-01
+## 5     NA 2012-10-01       20 2012-10-01
+## 6     NA 2012-10-01       25 2012-10-01
+## 7     NA 2012-10-01       30 2012-10-01
+## 8     NA 2012-10-01       35 2012-10-01
+## 9     NA 2012-10-01       40 2012-10-01
+## 10    NA 2012-10-01       45 2012-10-01
+```
+
 **Install packages & library section**
-```{r install packages, include=TRUE}
+
+```r
 knitr::opts_chunk$set(echo = TRUE)
 ## install cran mirror as rmarkdown/rstudio does not default cran library when it is invoked 
 install.packages("ggplot2",repos = c("http://cran.rstudio.com"))
+```
+
+```
+## Installing package into 'C:/Users/Declan/Documents/R/win-library/3.6'
+## (as 'lib' is unspecified)
+```
+
+```
+## package 'ggplot2' successfully unpacked and MD5 sums checked
+## 
+## The downloaded binary packages are in
+## 	C:\Users\Declan\AppData\Local\Temp\RtmpOi5YhC\downloaded_packages
+```
+
+```r
 ## Load ggplot2
 library(ggplot2)
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 3.6.3
+```
+
+```r
 ## load ggplot2 scales for x-axis time plot
 library(scales)
-
 ```
 
 ### What is mean total number of steps taken per day?
@@ -90,7 +138,8 @@ The data frame column **steps** is then summed by **date**fmt using the aggregat
 Data type & sample data is displayed and the summary function call on the column **Total.Daily.Steps** will display and the **mean** and **median** values for that column as requested.
 
 **Total Steps summed by Day**
-```{r data summed by date, include=TRUE}
+
+```r
 knitr::opts_chunk$set(echo = TRUE)
 
 ## Calculate total steps by day 
@@ -100,13 +149,30 @@ names(totbyday)<-c("Date","Total.Daily.Steps")
 
 ## Display data types and sample data
 str(totbyday)
-## Summary output will display the mean and median values of the Total Daily Steps")
-summary(totbyday$"Total.Daily.Steps")
-
-## Histogram of Total Daily Steps
-ggplot(data=totbyday, aes(Total.Daily.Steps,fill=I("blue"),col=I("red")))+geom_histogram(bins=25)+ggtitle("Histogram of Total Daily Steps")
+```
 
 ```
+## 'data.frame':	61 obs. of  2 variables:
+##  $ Date             : Date, format: "2012-10-01" "2012-10-02" ...
+##  $ Total.Daily.Steps: int  0 126 11352 12116 13294 15420 11015 0 12811 9900 ...
+```
+
+```r
+## Summary output will display the mean and median values of the Total Daily Steps")
+summary(totbyday$"Total.Daily.Steps")
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##       0    6778   10395    9354   12811   21194
+```
+
+```r
+## Histogram of Total Daily Steps
+ggplot(data=totbyday, aes(Total.Daily.Steps,fill=I("blue"),col=I("red")))+geom_histogram(bins=25)+ggtitle("Histogram of Total Daily Steps")
+```
+
+![](./instructions_fig/data summed by date-1.png)<!-- -->
 
 
 ### What is the average daily activity pattern?
@@ -118,7 +184,8 @@ Data type & sample data is displayed using str and a timeplot of average steps p
 The interval with the maxium average number of steps is extracted based on the maximum value of **Mean.Interval.Steps**
 
 **Average Steps per interval**
-```{r data average per interval, include=TRUE}
+
+```r
 knitr::opts_chunk$set(echo = TRUE)
 
 ## Calculate mean number of steps per 5 minute interval 
@@ -137,17 +204,34 @@ meanbyinterval$dtime<-as.POSIXct(paste0("2020-01-01"," ",meanbyinterval$HH,":",m
 
 ## Display data types etc
 str(meanbyinterval)
+```
 
+```
+## 'data.frame':	288 obs. of  5 variables:
+##  $ Interval           : int  0 5 10 15 20 25 30 35 40 45 ...
+##  $ Mean.Interval.Steps: num  1.717 0.3396 0.1321 0.1509 0.0755 ...
+##  $ HH                 : chr  "00" "00" "00" "00" ...
+##  $ MM                 : chr  "00" "05" "10" "15" ...
+##  $ dtime              : POSIXct, format: "2020-01-01 00:00:00" "2020-01-01 00:05:00" ...
+```
+
+```r
 ## Timeplot of mean steps per interval
 ggplot(meanbyinterval, aes(dtime,Mean.Interval.Steps))+ geom_line()+ xlab("Time over 24 hour period by hour")+
   scale_x_datetime(breaks = date_breaks("1 hour"),labels=date_format("%H:%M"))+
   ggtitle("Timeplot of mean steps per interval")+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
-  
+```
+
+![](./instructions_fig/data average per interval-1.png)<!-- -->
+
+```r
 ## Interval with the maximum number of mean steps      
 print(paste0("5 minute interval with the max mean steps: ",
              meanbyinterval$Interval[meanbyinterval$Mean.Interval.Steps==max(meanbyinterval$Mean.Interval.Steps)]))
+```
 
-  
+```
+## [1] "5 minute interval with the max mean steps: 835"
 ```
 
 ### Strategy for imputed missing **step** values
@@ -172,7 +256,8 @@ Data type & sample data is displayed and the summary function call on the column
 Data type & sample data is displayed using str and a histogram of total steps per day are displayed.
 
 **Code to derive Imputed missing values for steps**
-```{r imputed missing values, include=TRUE}
+
+```r
 knitr::opts_chunk$set(echo = TRUE)
 
 ## Add weekday name column
@@ -205,13 +290,27 @@ names(itotbyday)<-c("Date","Total.Daily.Steps")
 ##  REPORT SECTION  ##
 ## report the number of rows that have missing values
 print(paste0("The number of observations that having missing steps is ",nrow(msadf)))
+```
 
+```
+## [1] "The number of observations that having missing steps is 2304"
+```
+
+```r
 ## Histogram of total daily steps included imputed values
 ggplot(data=itotbyday, aes(Total.Daily.Steps,fill=I("blue"),col=I("red")))+geom_histogram(bins=25)+ggtitle("Histogram of Total Daily Steps including imputed values")
+```
 
+![](./instructions_fig/imputed missing values-1.png)<!-- -->
+
+```r
 ## Summary output will display the mean and median values of the Total Daily Steps using imputed data)
 summary(itotbyday$Total.Daily.Steps)
-  
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##      41    8918   11015   10821   12811   21194
 ```
 
 **Conclusion**
@@ -222,7 +321,8 @@ Imputting missing values caused differences for both mean and median values when
 In order to plot the average number of steps taken per 5 minute interval per daytype the **imputeda** data set is used and the mean of data frame column **steps** is calculated by **interval** & a newly created **daytype** containing "weekend" days and "weekday"s using the aggregate function and ouput assigned to a new data frame, **wd**, where the column names are adjusted in preparation for graphical output.
 
 **Average Steps per interval split by weekdays/weekend days**
-```{r average interval per daytype, include=TRUE}
+
+```r
 knitr::opts_chunk$set(echo = TRUE)
 
 ## assign a new column to th eimputed data set and populate it with "weekend" if day is a Saturday or 
@@ -250,8 +350,9 @@ wd$dtime<-as.POSIXct(paste0("2020-01-01"," ",wd$HH,":",wd$MM,":00"))
 ggplot(wd, aes(dtime,Mean.Interval.Steps))+ geom_line()+ xlab("Time over 24 hour period by hour")+
     scale_x_datetime(breaks = date_breaks("4 hours"),labels=date_format("%H:%M"))+ facet_grid(Daytype~. )+
   ggtitle("Mean steps per interval by weekend/weekday")
-  
 ```
+
+![](./instructions_fig/average interval per daytype-1.png)<!-- -->
 
 **Conclusion**
 
