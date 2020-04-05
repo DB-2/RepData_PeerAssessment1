@@ -73,7 +73,7 @@ head(activitydf, n=10)
 ```
 
 **Install packages & library section**
-```{r install packages, include=TRUE}
+```{r install_packages, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
 ## install cran mirror as rmarkdown/rstudio does not default cran library when it is invoked 
 install.packages("ggplot2",repos = c("http://cran.rstudio.com"))
@@ -90,7 +90,7 @@ The data frame column **steps** is then summed by **date**fmt using the aggregat
 Data type & sample data is displayed and the summary function call on the column **Total.Daily.Steps** will display and the **mean** and **median** values for that column as requested.
 
 **Total Steps summed by Day**
-```{r data summed by date, include=TRUE}
+```{r data_summed_by_date, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
 
 ## Calculate total steps by day 
@@ -118,7 +118,7 @@ Data type & sample data is displayed using str and a timeplot of average steps p
 The interval with the maxium average number of steps is extracted based on the maximum value of **Mean.Interval.Steps**
 
 **Average Steps per interval**
-```{r data average per interval, include=TRUE}
+```{r data_average_per_interval, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
 
 ## Calculate mean number of steps per 5 minute interval 
@@ -172,7 +172,7 @@ Data type & sample data is displayed and the summary function call on the column
 Data type & sample data is displayed using str and a histogram of total steps per day are displayed.
 
 **Code to derive Imputed missing values for steps**
-```{r imputed missing values, include=TRUE}
+```{r imputed_missing_values, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
 
 ## Add weekday name column
@@ -222,7 +222,7 @@ Imputting missing values caused differences for both mean and median values when
 In order to plot the average number of steps taken per 5 minute interval per daytype the **imputeda** data set is used and the mean of data frame column **steps** is calculated by **interval** & a newly created **daytype** containing "weekend" days and "weekday"s using the aggregate function and ouput assigned to a new data frame, **wd**, where the column names are adjusted in preparation for graphical output.
 
 **Average Steps per interval split by weekdays/weekend days**
-```{r average interval per daytype, include=TRUE}
+```{r average_interval_per_daytype, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
 
 ## assign a new column to th eimputed data set and populate it with "weekend" if day is a Saturday or 
