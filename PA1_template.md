@@ -172,7 +172,7 @@ summary(totbyday$"Total.Daily.Steps")
 ggplot(data=totbyday, aes(Total.Daily.Steps,fill=I("blue"),col=I("red")))+geom_histogram(bins=25)+ggtitle("Histogram of Total Daily Steps")
 ```
 
-![](data summed by date-1.png)<!-- -->
+![](https://github.com/DB-2/RepData_PeerAssessment1/blob/master/data summed by date-1.png)<!-- -->
 
 
 ### What is the average daily activity pattern?
@@ -222,7 +222,7 @@ ggplot(meanbyinterval, aes(dtime,Mean.Interval.Steps))+ geom_line()+ xlab("Time 
   ggtitle("Timeplot of mean steps per interval")+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
 ```
 
-![]("data average per interval-1.png")<!-- -->
+![]("https://github.com/DB-2/RepData_PeerAssessment1/blob/master/data average per interval-1.png")<!-- -->
 
 ```r
 ## Interval with the maximum number of mean steps      
@@ -352,7 +352,7 @@ ggplot(wd, aes(dtime,Mean.Interval.Steps))+ geom_line()+ xlab("Time over 24 hour
   ggtitle("Mean steps per interval by weekend/weekday")
 ```
 
-![](./average interval per daytype-1.png)<!-- -->
+![](https://github.com/DB-2/RepData_PeerAssessment1/blob/master/average interval per daytype-1.png)<!-- -->
 
 **Conclusion**
 
