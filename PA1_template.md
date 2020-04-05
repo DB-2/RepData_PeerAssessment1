@@ -115,7 +115,7 @@ install.packages("ggplot2",repos = c("http://cran.rstudio.com"))
 ## package 'ggplot2' successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-## 	C:\Users\Declan\AppData\Local\Temp\RtmpMjs4GY\downloaded_packages
+## 	C:\Users\Declan\AppData\Local\Temp\RtmpWUf5oI\downloaded_packages
 ```
 
 ```r
@@ -172,7 +172,7 @@ summary(totbyday$"Total.Daily.Steps")
 ggplot(data=totbyday, aes(Total.Daily.Steps,fill=I("blue"),col=I("red")))+geom_histogram(bins=25)+ggtitle("Histogram of Total Daily Steps")
 ```
 
-![](PA1_template_files/figure-html/data summed by date-1.png)<!-- -->
+![](./PA1_template_files/figure-html/data summed by date-1.png)<!-- -->
 
 
 ### What is the average daily activity pattern?
